@@ -66,7 +66,7 @@ sub prepare_path {
 
     my $scheme = $c->request->secure ? 'https' : 'http';
     my $host      = $env->{HTTP_HOST} || $env->{SERVER_NAME};
-    my $port      = $env->{SERVER_PORT} || 80;
+    my $port      = $env->{HTTP_X_FORWARDED_PORT} || $env->{SERVER_PORT} || 80;
     my $base_path = $env->{SCRIPT_NAME} || "/";
 
     # set the request URI
